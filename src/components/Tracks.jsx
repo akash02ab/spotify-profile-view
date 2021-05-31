@@ -92,8 +92,8 @@ export default function Tracks() {
           <Heading>Tracks</Heading>
           <Wrapper>
             <List active={active === "All"} onClick={() => setActive("All")}>All Time</List>
-            <List active={active === "All"} onClick={() => setActive("Medium")}>Last 6 Months</List>
-            <List active={active === "All"} onClick={() => setActive("Short")}>Last 4 Weeks</List>
+            <List active={active === "Medium"} onClick={() => setActive("Medium")}>Last 6 Months</List>
+            <List active={active === "Short"} onClick={() => setActive("Short")}>Last 4 Weeks</List>
           </Wrapper>
         </Header>
         <TrackWrapper>
