@@ -4,7 +4,7 @@ import { REMOVE_TOKEN } from "../redux/actions";
 import "../styles/user.css";
 
 function User() {
-    const { user, loading } = useSelector((state) => state.userState);
+    const { user, loading,error } = useSelector((state) => state.userState);
     const history = useHistory();
     const dispatch = useDispatch();
 
@@ -14,7 +14,7 @@ function User() {
         history.push("/");
     };
 
-    if (loading) return null;
+    if (loading||error) return null;
 
     const alt = "../assets/icons/user-solid.svg";
     const src = user.images[0].url || alt;

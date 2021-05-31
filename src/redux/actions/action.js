@@ -37,25 +37,25 @@ const fetchTokenError = (error) => ({
 
 export const getToken = () => {
     return async function (dispatch, getState) {
-        const {tokenState: {code}} = getState();
-        
+        const { tokenState: { code } } = getState();
+
         const options = {
             method: 'POST',
             url: 'https://accounts.spotify.com/api/token',
-            auth:{
+            auth: {
                 username: "d45167963940408e8732302c867374d5",
                 password: "35ebcc2d29024775a9931c846430772b"
             },
             headers: {
-              'Content-Type': 'application/x-www-form-urlencoded',
+                'Content-Type': 'application/x-www-form-urlencoded',
             },
             data: queryString.stringify({
-              grant_type: 'authorization_code',
-              code: code,
-              redirect_uri: 'http://localhost:3000/'
+                grant_type: 'authorization_code',
+                code: code,
+                redirect_uri: 'http://localhost:3000/'
             })
-          };
-          
+        };
+
         try {
             dispatch(fetchTokenInprogress());
             let response = await axios.request(options);
@@ -83,7 +83,7 @@ const fetchUserError = (error) => ({
 
 export const getUserData = () => {
     return async function (dispatch, getState) {
-        const {tokenState: {token}} = getState();
+        const { tokenState: { token } } = getState();
 
         try {
             dispatch(fetchUserInprogress());
@@ -93,9 +93,9 @@ export const getUserData = () => {
                     Authorization: "Bearer " + token,
                 },
             });
-            
-            const id =  response.data.id;
-            
+
+            const id = response.data.id;
+
             let user = await axios.request({
                 url: `https://api.spotify.com/v1/users/${id}`,
                 headers: {
@@ -105,7 +105,7 @@ export const getUserData = () => {
             console.log(user)
             dispatch(fetchUserSuccess(user.data));
         }
-        catch(err) {
+        catch (err) {
             console.error(err);
             dispatch(fetchUserError(err));
         }
@@ -128,23 +128,32 @@ const fetchTopArtistError = (error) => ({
 
 export const getTopArtist = () => {
     return async function (dispatch, getState) {
-        const {tokenState: {token}} = getState();
-        
-        const options = {
-            method: 'GET',
-            url: 'https://api.spotify.com/v1/me/top/artists',
-            headers: {
-              Authorization: 'Bearer ' + token,
-              'Content-Type': 'application/json',
-              'Accept': "application/json"
-            }
-        };
-        
+        const { tokenState: { token } } = getState();
+        let terms = ["long_term","medium_term","short_term"]
+        let getOptions = (term) => {
+            return {
+                method: 'GET',
+                url: 'https://api.spotify.com/v1/me/top/artists?time_range=' + term,
+                headers: {
+                    Authorization: 'Bearer ' + token,
+                    'Content-Type': 'application/json',
+                    'Accept': "application/json"
+                }
+            };
+        }
         try {
             dispatch(fetchTopArtistInprogress());
-            let response = await axios.request(options);
-            let data = await response;
-            dispatch(fetchTopArtistSuccess(data.data.items));
+            let datas = { alltime: [], months: [], weeks: [] }
+            let response = await axios.request(getOptions(terms[0]));
+            let data = await response.data;
+            datas.alltime = data.items;
+            let mediumResponse = await axios.request(getOptions(terms[1]));
+            let mediumData = await mediumResponse.data;
+            datas.months = mediumData.items;
+            let shortResponse = await axios.request(getOptions(terms[2]));
+            let shortData = await shortResponse.data;
+            datas.weeks = shortData.items;
+            dispatch(fetchTopArtistSuccess(datas));
         } catch (e) {
             console.log(e);
             dispatch(fetchTopArtistError(e));
@@ -168,23 +177,34 @@ const fetchTopTrackError = (error) => ({
 
 export const getTopTrack = () => {
     return async function (dispatch, getState) {
-        const {tokenState: {token}} = getState();
-        
-        const options = {
-            method: 'GET',
-            url: 'https://api.spotify.com/v1/me/top/tracks',
-            headers: {
-              Authorization: 'Bearer ' + token,
-              'Content-Type': 'application/json',
-              'Accept': "application/json"
-            }
-        };
-        
+        const { tokenState: { token } } = getState();
+
+        let terms = ["long_term","medium_term","short_term"]
+        let getOptions = (term) => {
+            return {
+                method: 'GET',
+                url: 'https://api.spotify.com/v1/me/top/tracks?time_range=' + term,
+                headers: {
+                    Authorization: 'Bearer ' + token,
+                    'Content-Type': 'application/json',
+                    'Accept': "application/json"
+                }
+            };
+        }
+
         try {
             dispatch(fetchTopTrackInprogress());
-            let response = await axios.request(options);
-            let data = await response;
-            dispatch(fetchTopTrackSuccess(data.data.items));
+            let datas = {alltime:[],months:[],weeks:[]};
+            let response = await axios.request(getOptions(terms[0]));
+            let data = await response.data;
+            datas.alltime = data.items;
+            let mediumResponse = await axios.request(getOptions(terms[1]));
+            let mediumData = await mediumResponse.data;
+            datas.months = mediumData.items;
+            let shortResponse = await axios.request(getOptions(terms[2]));
+            let shortData = await shortResponse.data;
+            datas.weeks = shortData.items;
+            dispatch(fetchTopTrackSuccess(datas));
         } catch (e) {
             console.log(e);
             dispatch(fetchTopTrackError(e));

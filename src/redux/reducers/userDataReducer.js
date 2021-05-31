@@ -11,7 +11,7 @@ export function userDataReducer(state = initialState, action) {
         case FETCH_USER_INPROGRESS:
             return { ...state, loading: true };
         case FETCH_USER_SUCCESS:
-            return { ...state, user: action.payload, loading: false };
+            return { ...state, user: action.payload, loading: false , error:null};
         case FETCH_USER_ERROR:
             return { ...state, error: action.error };
         default:
