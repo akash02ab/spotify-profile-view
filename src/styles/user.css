@@ -1,0 +1,35 @@
+.user {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+    height: 20rem;
+}
+
+.user img {
+    border-radius: 50%;
+    width: 8rem;
+    height: 8rem;
+}
+
+.default {
+    filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(163deg) brightness(100%) contrast(103%);
+    border: 2px solid #f00;
+    padding: 0.5rem;
+}
+
+.user .info {
+    display: flex;
+    gap: 1rem;
+    text-align: center;
+}
+
+.user .info p {
+    color: #23dd6b;
+}
+
+.user .info h5 {
+    font-weight: 500;
+}
