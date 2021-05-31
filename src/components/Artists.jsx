@@ -47,11 +47,12 @@ const ArtistWrapper = styled.div`
     width: 100%;
     height: 85%;
     display: flex;
+    justify-content: center;
     align-items: flex-start;
     flex-wrap: wrap;
     gap: 50px;
     overflow-y: auto;
-    padding: 0 10px 0 10%;
+    padding: 0 50px;
 `;
 
 const List = styled.li`

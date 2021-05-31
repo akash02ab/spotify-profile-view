@@ -11,8 +11,8 @@ const Container = styled.div`
 `;
 
 const Image = styled.img`
-    height: 200px;
-    width: 200px;
+    height: 250px;
+    width: 250px;
     border-radius: 50%;
 `;
 const Text = styled.p`
