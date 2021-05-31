@@ -18,6 +18,7 @@ function Profile() {
         dispatch(getUserData());
         dispatch(getTopArtist());
         dispatch(getTopTrack());
+        // eslint-disable-next-line
     }, []);
 
     return (

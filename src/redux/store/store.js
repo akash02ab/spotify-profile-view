@@ -28,7 +28,7 @@ const loadFromLocalStorage = () => {
 
 // create our store from our rootReducers and use loadFromLocalStorage
 // to overwrite any values that we already have saved
-const store = createStore(rootReducer, applyMiddleware(logger, thunk));
+const store = createStore(rootReducer, loadFromLocalStorage(), applyMiddleware(logger, thunk));
 
 // listen for store changes and use saveToLocalStorage to
 // save them to localStorage

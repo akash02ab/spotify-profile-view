@@ -21,7 +21,7 @@ function User() {
 
     return (
         <div className="user">
-            <img src={src} className={src === alt ? "default" : ""} />
+            <img src={src} className={src === alt ? "default" : ""} alt="" />
             <h1>{user.display_name}</h1>
             <div className="info">
                 <div className="follower">

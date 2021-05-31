@@ -44,6 +44,7 @@ function Login() {
         } catch (err) {
             console.error(err);
         }
+    // eslint-disable-next-line
     }, [token]);
 
     return (
