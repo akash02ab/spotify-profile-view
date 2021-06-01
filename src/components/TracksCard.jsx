@@ -1,6 +1,5 @@
 import styled from "styled-components"
 
-
 const Container = styled.div`
     display: flex;
     gap: 30px;
@@ -33,7 +32,6 @@ const Text = styled.p`
 `;
 
 export default function TracksCard(props){
-
     return(
         <Container>
             <Image  src={props.img}/>
@@ -44,5 +42,4 @@ export default function TracksCard(props){
             <Text artist={true} time={true}>{props.length} </Text>
         </Container>
     )
-
 }

@@ -1,6 +1,5 @@
 import styled from "styled-components";
 
-
 const Container = styled.div`
     display: flex;
     align-items: center;
@@ -19,8 +18,8 @@ const Text = styled.p`
     font-size: 18px;
     color: white;
 `;
-export default function ArtistsCard(props){
 
+export default function ArtistsCard(props){
     return(
         <Container>
             <Image src={props.image} />

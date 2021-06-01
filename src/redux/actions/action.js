@@ -129,7 +129,9 @@ const fetchTopArtistError = (error) => ({
 export const getTopArtist = () => {
     return async function (dispatch, getState) {
         const { tokenState: { token } } = getState();
+        
         let terms = ["long_term","medium_term","short_term"]
+        
         let getOptions = (term) => {
             return {
                 method: 'GET',
@@ -141,6 +143,7 @@ export const getTopArtist = () => {
                 }
             };
         }
+        
         try {
             dispatch(fetchTopArtistInprogress());
             let datas = { alltime: [], months: [], weeks: [] }
@@ -180,6 +183,7 @@ export const getTopTrack = () => {
         const { tokenState: { token } } = getState();
 
         let terms = ["long_term","medium_term","short_term"]
+        
         let getOptions = (term) => {
             return {
                 method: 'GET',
