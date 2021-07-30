@@ -1,0 +1,46 @@
+.artists {
+	width: 90vw;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 4rem;
+}
+
+.artists > .header {
+	width: 85%;
+	display: flex;
+	justify-content: space-between;
+}
+
+.artists > .header > .wrapper {
+	display: flex;
+	gap: 1rem;
+	cursor: pointer;
+}
+
+.artist-wrapper {
+	width: 90%;
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: center;
+	gap: 4rem;
+}
+
+.artist-card {
+	text-align: center;
+	cursor: pointer;
+}
+
+.artist-card > img {
+	width: 12rem;
+	height: 12rem;
+	border-radius: 50%;
+}
+
+.artist-card > p {
+	margin-top: 0.5rem;
+}
+
+.artists .wrapper .active {
+	text-decoration: underline;
+}

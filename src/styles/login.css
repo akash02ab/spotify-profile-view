@@ -1,20 +1,17 @@
-.container {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
-    background: #181818;
-    color: #ffffff;
+.login {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 1rem;
 }
 
-.container > button {
-    width: 12rem;
-    height: 2rem;
-    border: none;
-    border-radius: 0.8rem;
-    background: #1CB753;
-    color: #ffffff;
-    cursor: pointer;
+.login > button {
+	width: 12rem;
+	height: 2rem;
+	border: none;
+	border-radius: 0.8rem;
+	background: #1cb753;
+	color: #ffffff;
+	cursor: pointer;
 }

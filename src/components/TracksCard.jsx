@@ -1,45 +1,37 @@
-import styled from "styled-components"
+import { useHistory } from "react-router-dom";
 
-const Container = styled.div`
-    display: flex;
-    gap: 30px;
-    width: 100%;
-    height: fit-content;
-    padding: 5px 10px;
-    border: 3px solid transparent;
-    &:hover{
-        border-color: white;
-    }
-`;
+const getDuration = (ms) => {
+	let sec = Math.floor(ms / 1000);
+	let min = Math.floor(sec / 60);
+	sec = sec - min * 60;
+	sec = sec < 10 ? "0" + sec : sec;
+	return min + ":" + sec;
+};
 
-const TextContainer = styled.div`
-    flex:1;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    flex-wrap: wrap;
-`;
+export default function TracksCard({ track }) {
+	const history = useHistory();
 
-const Image = styled.img`
-    height: 50px;
-    width: 50px;
-`;
+	const getAllArtists = (artists) => artists.map((artist) => artist.name).join(", ");
 
-const Text = styled.p`
-    font-size: 14px;
-    color: ${props=>props.artist?"#9e9e9e":"white"};
-    align-self: ${props=>props.time?"center":""};
-`;
+	const trackDetails = (detail) => {
+		history.push({
+			pathname: "/track/detail",
+			state: detail,
+		});
+	};
 
-export default function TracksCard(props){
-    return(
-        <Container>
-            <Image  src={props.img}/>
-            <TextContainer>
-                <Text>{props.title}</Text>
-                <Text>{props.singer}</Text>
-            </TextContainer>
-            <Text artist={true} time={true}>{props.length} </Text>
-        </Container>
-    )
+	return (
+		<div className="track" onClick={() => trackDetails(track)}>
+			<div className="track-left">
+				<img src={track.album.images[0].url} alt="track" />
+
+				<div className="info">
+					<h4>{track.name}</h4>
+					<p>{getAllArtists(track.artists)}</p>
+				</div>
+			</div>
+
+			<div className="track-right">{getDuration(track.duration_ms)}</div>
+		</div>
+	);
 }

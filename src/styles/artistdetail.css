@@ -1,0 +1,35 @@
+.artist-detail {
+	width: 80vw;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 1.5rem;
+}
+
+.artist-detail > img {
+	width: 16rem;
+	height: 16rem;
+	border-radius: 50%;
+}
+
+.artist-detail h1 {
+	font-size: 3em;
+}
+
+.artist-detail > .details {
+	width: 80%;
+	display: flex;
+	justify-content: space-around;
+	text-align: center;
+}
+
+.artist-detail > .details h4 {
+	color: #7d858d;
+	margin-bottom: 0.5rem;
+}
+
+.artist-detail > .details h3 {
+	color: #408df5;
+	font-size: 1.5em;
+	margin-bottom: 0.1rem;
+}

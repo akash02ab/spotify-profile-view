@@ -1,32 +1,37 @@
 .all-time-top-track {
-    margin-top: 2rem;
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
+	margin-top: 2rem;
+	display: flex;
+	flex-direction: column;
+	gap: 1.5rem;
 }
 
 .track {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.track:hover h4 {
+	text-decoration: underline;
+	cursor: pointer;
 }
 
 .track-left {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
+	display: flex;
+	align-items: center;
+	gap: 1rem;
 }
 
 .track .info p {
-    width: 20rem;
-    font-size: 0.8em;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+	width: 20rem;
+	font-size: 0.8em;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 
 .track-left img {
-    width: 3rem;
-    height: 3rem;
-    border: none;
+	width: 3rem;
+	height: 3rem;
+	border: none;
 }

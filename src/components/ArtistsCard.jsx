@@ -1,29 +1,19 @@
-import styled from "styled-components";
+import { useHistory } from "react-router-dom";
 
-const Container = styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    flex-wrap: wrap;
-    gap: 10px;
-`;
+export default function ArtistsCard({ artist }) {
+	const history = useHistory();
 
-const Image = styled.img`
-    height: 250px;
-    width: 250px;
-    border-radius: 50%;
-`;
-const Text = styled.p`
-    font-size: 18px;
-    color: white;
-`;
+	const clickhandler = () => {
+		history.push({
+			pathname: "/artist/detail",
+			state: artist,
+		});
+	};
 
-export default function ArtistsCard(props){
-    return(
-        <Container>
-            <Image src={props.image} />
-            <Text>{props.name}</Text>
-        </Container>
-    )
+	return (
+		<div className="artist-card" onClick={clickhandler}>
+			<img src={artist.images[0].url} alt="profile-pic" />
+			<p>{artist.name}</p>
+		</div>
+	);
 }
