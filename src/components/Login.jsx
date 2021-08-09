@@ -5,8 +5,8 @@ import { getToken, setCode } from "../redux/actions/fetchTokenAction";
 import "../styles/login.css";
 
 const authEndpoint = "https://accounts.spotify.com/authorize";
-// const redirectUri = encodeURIComponent("https://sleepy-lichterman-b9a815.netlify.app/");
-const redirectUri = encodeURIComponent("http://localhost:3000/");
+const redirectUri = encodeURIComponent("https://sleepy-lichterman-b9a815.netlify.app/");
+// const redirectUri = encodeURIComponent("http://localhost:3000/");
 const clientId = "d45167963940408e8732302c867374d5";
 
 const scopes = [
