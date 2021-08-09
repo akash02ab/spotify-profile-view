@@ -16,7 +16,7 @@ function User() {
 	};
 
 	if (error) {
-		// dispatch(refreshAccessToken());
+		dispatch(refreshAccessToken());
 		// window.location.reload();
 		return null;
 	}
