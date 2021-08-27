@@ -5,26 +5,24 @@ We will be creating a Spotify Profile overview app which will fetch a Spotify us
 You need to use `redux` compulsorily in this project.
 
 ## Screenshots
+
 1. Login Page
-![](./screenshots/1.png)
+   ![](./screenshots/login.png)
 
 2. Profile Page
-![](./screenshots/2.png)
+   ![](./screenshots/home.jpeg)
 
 3. Top Artists Page with filters
-![](./screenshots/3.png)
-
+   ![](./screenshots/artists.jpeg)
 
 4. Top Tracks Page with filters
-![](./screenshots/4.png)
-
+   ![](./screenshots/tracks.jpeg)
 
 5. Recent activity (**Stretch**)
-![](./screenshots/6.png)
+   ![](./screenshots/6.png)
 
 6. Playlists (**Stretch**)
-![](./screenshots/5.png)
-
+   ![](./screenshots/5.png)
 
 Stretch: Mobile friendly:
 
