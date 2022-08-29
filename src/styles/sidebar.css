@@ -1,14 +1,11 @@
 .sidebar {
-	width: 5vw;
+	width: 5rem;
 	height: 100vh;
-	background: black;
+	background: var(--black-primary);
 	display: flex;
 	flex-direction: column;
 	justify-content: space-around;
 	align-items: center;
-	position: fixed;
-	left: 0;
-	top: 0;
 }
 
 .nav-icons {
@@ -18,29 +15,109 @@
 }
 
 .sidebar img {
-	filter: brightness(0) invert(1);
 	width: 1.5rem;
 	height: 1.5rem;
 	cursor: pointer;
 	z-index: 1;
 }
 
-.spotify-logo img {
-	filter: invert(61%) sepia(100%) saturate(339%) hue-rotate(88deg) brightness(88%) contrast(109%);
+.spotify-logo  {
+	color: var(--spotify-green);
+	width: 45px;
+	height: 45px;
 }
 
-.box {
-	width: 5vw;
-	height: 3rem;
+.spotify-logo:hover {
+	color: var(--spotify-green-fade);
+}
+
+.spotify-logo svg {
+	fill: currentColor;
+}
+
+.nav-icons .box {
+	width: 5rem;
+	height: 4rem;
+	padding: var(--spacing-sm);
 	border: none;
 	display: flex;
+	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	gap: 0.5rem;
+	color: #9b9b9b;
 }
 
-.box:hover,
+.nav-icons .box p {
+	font-size: var(--font-xs);
+	color: var(--light-grey-secondary);
+}
+
+.nav-icons .box svg {
+	width: 2rem;
+	height: 2rem;
+	fill: currentColor;
+}
+
+.nav-icons .box:hover,
 .nav-icons .active {
-	background: rgba(82, 82, 117, 0.25);
-	border-left: 0.3rem solid rgb(0, 255, 0);
+	color: var(--white);
+	background: var(--black-primary);
+	border-left: 0.3rem solid var(--spotify-green);
 	border-right: 0.3rem solid transparent;
+}
+
+.github {
+	color: var(--light-grey-secondary);
+  width: 3rem;
+  height: 3rem;
+}
+
+.github a:hover, a:focus, a:active {
+	color: var(--blue);
+}
+
+.github svg {
+	width: 2.5rem;
+	fill: currentColor;
+}
+
+@media screen and (max-width:768px) {
+	.sidebar {
+		width: 100%;
+		height: auto;
+		flex-direction: row;
+	}
+
+	.nav-icons {
+		width: 100%;
+		flex-direction: row;
+		justify-content: space-evenly;
+		gap: 1px;
+	}
+
+	.nav-icons .box {
+		width: 25%;
+		height: 3.5rem;
+		padding: 0;
+	}
+
+	.nav-icons .box svg {
+		width: 1rem;
+		height: 1rem;
+	}
+
+	.nav-icons .box:hover,
+	.nav-icons .active {
+	color: var(--white);
+	background: var(--black-primary);
+	border-bottom: 0.3rem solid transparent;
+	border-top: 0.3rem solid var(--spotify-green);
+	border-left: 0;
+	border-right: 0;
+	}
+
+	.spotify-logo, .github {
+		display: none;
+	}
 }

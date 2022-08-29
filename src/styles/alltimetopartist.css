@@ -1,26 +1,30 @@
 .all-time-top-artist {
-	margin-top: 2rem;
+	width: 100%;
 	display: flex;
 	flex-direction: column;
-	justify-content: flex-start;
-	gap: 1.5rem;
+	flex: 1;
+	gap: var(--spacing-base);
 }
 
 .label {
 	display: flex;
 	align-items: center;
-	gap: 2rem;
+	justify-content: space-between;
+	gap: var(--spacing-md);
 }
 
-.label button {
-	transform: scale(0.8);
+.profile .label button {
+	width: 6rem;
+	height: 2rem;
+	border-radius: 1rem;
+	font-size: var(--font-xs);
 }
 
 .artist {
 	display: flex;
 	justify-content: flex-start;
 	align-items: center;
-	gap: 1rem;
+	gap: var(--spacing-base);
 }
 
 .artist:hover {
@@ -36,5 +40,17 @@
 }
 
 .artist h4 {
-	font-weight: 500;
+	font-weight: var(--font-medium);
+}
+
+@media screen and (max-width: 480px) {
+	.label h2 {
+		font-size: var(--font-md);
+	}
+
+	.profile .label button {
+		width: 4rem;
+		height: 1.5rem;
+		font-size: var(--font-xxs);
+	}
 }

@@ -20,6 +20,12 @@ const fetchUserError = (error) => ({
 	error: error,
 });
 
+const getUser = (headers) => axios.get('https://api.spotify.com/v1/me', { headers });
+
+const getFollowing = (headers) => axios.get('https://api.spotify.com/v1/me/following?type=artist', { headers });
+
+const getPlaylists = (headers) => axios.get('https://api.spotify.com/v1/me/playlists', { headers });
+
 export const getUserData = () => {
 	return async function (dispatch, getState) {
 		const {
@@ -28,26 +34,27 @@ export const getUserData = () => {
 			},
 		} = getState();
 
+		const headers = {
+			Authorization: `Bearer ${access_token}`,
+			"Content-Type": "application/json"
+		};
+
 		try {
 			dispatch(fetchUserInprogress());
 
-			let response = await axios.request({
-				url: "https://api.spotify.com/v1/me",
-				headers: {
-					Authorization: "Bearer " + access_token,
-				},
-			});
+			let response = await axios.all([
+				getUser(headers),
+				getFollowing(headers),
+				getPlaylists(headers),
+			]);
 
-			const id = response.data.id;
-
-			let user = await axios.request({
-				url: `https://api.spotify.com/v1/users/${id}`,
-				headers: {
-					Authorization: "Bearer " + access_token,
-				},
-			});
-
-			dispatch(fetchUserSuccess(user.data));
+			let data = {
+				...response[0].data,
+				following: response[1].data.artists.total,
+				playlist: response[2].data.total
+			};
+			
+			dispatch(fetchUserSuccess(data));
 		} catch (err) {
 			dispatch(fetchUserError(err));
 		}

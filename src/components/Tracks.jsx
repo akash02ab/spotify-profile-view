@@ -1,11 +1,28 @@
-import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { getTopTrack } from "../redux/actions/topTrackAction";
+import { handleError } from "../utils";
 import TracksCard from "./TracksCard";
+import Loader from "./Loader";
 import "../styles/track.css";
 
 export default function Tracks() {
-	const { topTracks, topTracksMonths, topTracksWeeks } = useSelector((state) => state.topTrackState);
+	const dispatch = useDispatch();
 	const [active, setActive] = useState("All");
+	const { topTracks, topTracksMonths, topTracksWeeks, loading, error } = useSelector((state) => state.topTrackState);
+
+	useEffect(() => {
+		if (!topTracks) {
+			dispatch(getTopTrack())
+		}
+	}, [dispatch, topTracks]);
+
+	if (error) {
+		handleError(error);
+		return <Loader />;
+	}
+
+	if (loading || !topTracks) return <Loader />;
 
 	return (
 		<div className="tracks">

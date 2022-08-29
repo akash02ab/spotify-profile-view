@@ -1,7 +1,13 @@
 .recently-played {
-	width: 90vw;
+	width: 100%;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	gap: 2rem;
+	gap: var(--spacing-base);
+}
+
+@media screen and (max-width: 480px) {
+	.recently-played h1 {
+		font-size: var(--font-lg);
+	}
 }

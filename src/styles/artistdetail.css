@@ -1,9 +1,11 @@
 .artist-detail {
-	width: 80vw;
+	width: 100%;
+	height: 100%;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	gap: 1.5rem;
+	justify-content: center;
+	gap: var(--spacing-base);
 }
 
 .artist-detail > img {
@@ -12,24 +14,46 @@
 	border-radius: 50%;
 }
 
-.artist-detail h1 {
-	font-size: 3em;
-}
-
 .artist-detail > .details {
-	width: 80%;
+	width: 70%;
 	display: flex;
 	justify-content: space-around;
 	text-align: center;
 }
 
 .artist-detail > .details h4 {
-	color: #7d858d;
-	margin-bottom: 0.5rem;
+	color: var(--light-grey-secondary);
+	font-weight: var(--font-regular);
+	margin-bottom: var(--spacing-xs);
 }
 
 .artist-detail > .details h3 {
-	color: #408df5;
-	font-size: 1.5em;
-	margin-bottom: 0.1rem;
+	color: var(--blue);
+	font-size: var(--font-md);
+	font-weight: var(--font-bold);
+	margin-bottom: var(--spacing-xs);
+}
+
+
+@media screen and (max-width: 480px) {
+	.artist-detail > img {
+		width: 12rem;
+		height: 12rem;
+	}
+
+	.artist-detail > h1 {
+		font-size: var(--font-lg);
+	}
+	
+	.artist-detail .details {
+		width: 95%;
+	}
+
+	.artist-detail .details h4 {
+		font-size: var(--font-sm);
+	}
+
+	.artist-detail .details h3 {
+		font-size: var(--font-base);
+	}
 }

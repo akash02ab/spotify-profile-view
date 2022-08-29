@@ -1,4 +1,4 @@
-import { SET_CODE, FETCH_TOKEN_INPROGRESS, FETCH_TOKEN_SUCCESS, FETCH_TOKEN_ERROR, REMOVE_TOKEN } from "../actions";
+import { SET_CODE, FETCH_TOKEN_INPROGRESS, FETCH_TOKEN_SUCCESS, FETCH_TOKEN_ERROR, REMOVE_TOKEN, CLEAR_ERROR } from "../actions";
 
 let initialState = {
 	token: null,
@@ -16,9 +16,11 @@ export function fetchTokenReducer(state = initialState, action) {
 		case FETCH_TOKEN_SUCCESS:
 			return { ...state, token: action.payload, loading: false, error: null };
 		case FETCH_TOKEN_ERROR:
-			return { ...state, error: action.error };
+			return { ...state, loading: false, error: action.error };
 		case REMOVE_TOKEN:
 			return { ...state, token: null };
+		case CLEAR_ERROR:
+			return { ...state, error: null };
 		default:
 			return state;
 	}

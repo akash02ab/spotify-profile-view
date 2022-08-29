@@ -5,16 +5,23 @@ import { getToken, setCode } from "../redux/actions/fetchTokenAction";
 import "../styles/login.css";
 
 const authEndpoint = "https://accounts.spotify.com/authorize";
-const redirectUri = encodeURIComponent("https://sleepy-lichterman-b9a815.netlify.app/");
-// const redirectUri = encodeURIComponent("http://localhost:3000/");
+// const redirectUri = encodeURIComponent("https://sleepy-lichterman-b9a815.netlify.app/");
+const redirectUri = encodeURIComponent("http://localhost:3000/");
 const clientId = "d45167963940408e8732302c867374d5";
 
 const scopes = [
-	"user-read-currently-playing",
+	"user-read-private",
+	"user-read-email",
 	"user-read-recently-played",
-	"user-read-playback-state",
 	"user-top-read",
+	"user-follow-read",
+	"user-follow-modify",
+	"user-read-currently-playing",
+	"user-read-playback-state",
 	"user-modify-playback-state",
+	"playlist-read-private",
+	"playlist-read-collaborative",
+	"playlist-modify-public"
 ];
 
 const URL = `${authEndpoint}?client_id=${clientId}&response_type=code&redirect_uri=${redirectUri}&scope=${scopes.join(
@@ -48,8 +55,7 @@ function Login() {
 		} catch (err) {
 			console.error(err);
 		}
-		// eslint-disable-next-line
-	}, [token]);
+	}, [dispatch, history, token]);
 
 	return (
 		<div className="login">

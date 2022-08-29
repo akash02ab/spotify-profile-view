@@ -28,8 +28,7 @@ export const getRecentlyPlayed = () => {
 			url: "https://api.spotify.com/v1/me/player/recently-played",
 			headers: {
 				Authorization: "Bearer " + access_token,
-				"Content-Type": "application/json",
-				Accept: "application/json",
+				"Content-Type": "application/json"
 			},
 		};
 
@@ -37,6 +36,7 @@ export const getRecentlyPlayed = () => {
 			dispatch(recentlyPlayedInProgress());
 			const response = await axios.request(header);
 			const data = await response.data;
+			console.log(data)
 			dispatch(recentlyPlayedSuccess(data.items));
 		} catch (err) {
 			dispatch(recentlyPlayedError(err));

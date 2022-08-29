@@ -1,12 +1,13 @@
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
+import { handleError } from "../utils";
+import Loader from "./Loader";
 import "../styles/alltimetopartist.css";
 
 function AllTimeTopArtist() {
-	const { topArtists, loading } = useSelector((state) => state.topArtistState);
+	const { topArtists, error } = useSelector((state) => state.topArtistState);
+	const dispatch = useDispatch();
 	const history = useHistory();
-
-	if (loading) return null;
 
 	const clickhandler = () => {
 		history.push("/artists");
@@ -18,6 +19,13 @@ function AllTimeTopArtist() {
 			state: details,
 		});
 	};
+
+	if (error) {
+		dispatch(handleError(error));
+		return <Loader />;
+	}
+
+	if (!topArtists) return <Loader />;
 
 	return (
 		<div className="all-time-top-artist">

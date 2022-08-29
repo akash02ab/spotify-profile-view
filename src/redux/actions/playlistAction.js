@@ -15,7 +15,7 @@ const fetchPlaylistError = (error) => ({
 	error: error,
 });
 
-export const getPlaylist = () => {
+export const getPlaylists = () => {
 	return async function (dispatch, getState) {
 		const {
 			tokenState: {
@@ -28,8 +28,7 @@ export const getPlaylist = () => {
 			url: "https://api.spotify.com/v1/me/playlists",
 			headers: {
 				Authorization: "Bearer " + access_token,
-				"Content-Type": "application/json",
-				Accept: "application/json",
+				"Content-Type": "application/json"
 			},
 		};
 
@@ -37,7 +36,7 @@ export const getPlaylist = () => {
 			dispatch(fetchPlaylistInProgress());
 			const response = await axios.request(header);
 			const data = await response.data;
-			dispatch(fetchPlaylistSuccess(data.playlist.items));
+			dispatch(fetchPlaylistSuccess(data));
 		} catch (err) {
 			dispatch(fetchPlaylistError(err));
 		}

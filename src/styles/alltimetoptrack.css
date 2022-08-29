@@ -1,33 +1,29 @@
 .all-time-top-track {
-	margin-top: 2rem;
+	width: 100%;
 	display: flex;
 	flex-direction: column;
-	gap: 1.5rem;
+	flex: 1;
+	gap: var(--spacing-base);
 }
 
 .track {
+	width: 100%;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	gap: var(--spacing-sm);
 }
 
 .track:hover h4 {
 	text-decoration: underline;
+	font-weight: var(--font-regular);
 	cursor: pointer;
 }
 
 .track-left {
-	display: flex;
-	align-items: center;
-	gap: 1rem;
-}
-
-.track .info p {
-	width: 20rem;
-	font-size: 0.8em;
-	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
+	display: grid;
+	grid-template-columns: 1fr max-content;
+	gap: var(--spacing-base);
 }
 
 .track-left img {
@@ -35,3 +31,40 @@
 	height: 3rem;
 	border: none;
 }
+
+.track-right {
+	width: 100%;
+	display: grid;
+	grid-template-columns: 1fr max-content;
+	gap: var(--spacing-base);
+}
+
+.track-right .info {
+	overflow: hidden;
+}
+
+.track-right .info h4 {
+	font-weight: var(--font-medium);
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.track-right .info p {
+	font-size: var(--font-xs);
+	font-weight: var(--font-light);
+	color: var(--light-grey-primary);
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.track-right .duration {
+	font-size: var(--font-sm);
+	font-weight: var(--font-regular);
+	color: var(--light-grey-secondary);
+}
+
+
+
+

@@ -1,11 +1,11 @@
-import { FETCH_TOP_ARTIST_ERROR, FETCH_TOP_ARTIST_INPROGRESS, FETCH_TOP_ARTIST_SUCCESS } from "../actions";
+import { CLEAR_ERROR, FETCH_TOP_ARTIST_ERROR, FETCH_TOP_ARTIST_INPROGRESS, FETCH_TOP_ARTIST_SUCCESS } from "../actions";
 
 let initialState = {
 	topArtists: null,
 	topArtistsMonths: null,
 	topArtistsWeeks: null,
 	error: null,
-	loading: true,
+	loading: false,
 };
 
 export function topArtistsReducer(state = initialState, action) {
@@ -22,7 +22,9 @@ export function topArtistsReducer(state = initialState, action) {
 				error: null,
 			};
 		case FETCH_TOP_ARTIST_ERROR:
-			return { ...state, error: action.error };
+			return { ...state, loading: false, error: action.error };
+		case CLEAR_ERROR:
+			return { ...state, error: null };
 		default:
 			return state;
 	}

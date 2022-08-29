@@ -3,15 +3,19 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	gap: 1rem;
+	gap: var(--spacing-sm);
 }
 
 .login > button {
 	width: 12rem;
 	height: 2rem;
 	border: none;
-	border-radius: 0.8rem;
-	background: #1cb753;
-	color: #ffffff;
+	border-radius: 1rem;
+	background: var(--spotify-green);
+	color: var(--white);
 	cursor: pointer;
+}
+
+.login > button:hover {
+	background: var(--spotify-green-fade);
 }

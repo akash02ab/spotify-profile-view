@@ -1,4 +1,5 @@
 import {
+	CLEAR_ERROR,
 	FETCH_RECENTLY_PLAYED_ERROR,
 	FETCH_RECENTLY_PLAYED_INPROGRESS,
 	FETCH_RECENTLY_PLAYED_SUCCESS,
@@ -7,7 +8,7 @@ import {
 const initialState = {
 	loading: false,
 	error: null,
-	recentlyPlayed: [],
+	recentlyPlayed: null,
 };
 
 export const recentlyPlayedReducer = (state = initialState, action) => {
@@ -17,7 +18,9 @@ export const recentlyPlayedReducer = (state = initialState, action) => {
 		case FETCH_RECENTLY_PLAYED_SUCCESS:
 			return { ...state, loading: false, error: null, recentlyPlayed: action.payload };
 		case FETCH_RECENTLY_PLAYED_ERROR:
-			return { ...state, error: action.error };
+			return { ...state, loading: false, error: action.error };
+		case CLEAR_ERROR:
+			return { ...state, error: null };
 		default:
 			return state;
 	}

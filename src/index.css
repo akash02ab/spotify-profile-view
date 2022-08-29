@@ -1,3 +1,34 @@
+:root {
+	--spotify-green: #1DB954;
+	--spotify-green-fade: #1ed760;
+	--blue: #509bf5;
+	--black-primary: #040306;
+	--black-secondary: #181818;
+	--white: #ffffff;
+	--light-grey-primary: #b3b3b3;
+	--light-grey-secondary: #9b9b9b;
+	--grey-primary: #282828;
+	--grey-secondary: #404040;
+	--font-base: 16px;
+	--font-xxs: 8px;
+	--font-xs: 12px;
+	--font-sm: 14px;
+	--font-md: 20px;
+	--font-lg: 24px;
+	--font-xl: 28px;
+	--font-xxl: 32px;
+	--spacing-base: 20px;
+	--spacing-xs: 5px;
+	--spacing-sm: 10px;
+	--spacing-md: 30px;
+	--spacing-lg: 50px;
+	--spacing-xl: 100px;
+	--font-light: 100;
+	--font-regular: 300;
+	--font-medium: 500;
+	--font-bold: 700;
+}
+
 * {
 	margin: 0;
 	padding: 0;
@@ -8,14 +39,39 @@ body {
 	font-family: sans-serif;
 }
 
+a {
+	color: inherit;
+	text-decoration: inherit;
+}
+
 .container {
-	min-height: 100vh;
-	padding: 2rem;
-	background: #181818;
-	color: #ffffff;
+	width: 100%;
+	height: 100vh;
+	background: var(--black-secondary);
+	color: var(--white);
 	position: relative;
 	display: flex;
-	flex-direction: column;
+}
+
+.main-wrapper {
+	width: 100%;
+	height: 100%;
+	overflow-y: auto;
+	padding: var(--spacing-lg) var(--spacing-lg);
+}
+
+.main-wrapper .login {
+	display: flex;
 	align-items: center;
 	justify-content: center;
+}
+
+@media screen and  (max-width: 768px) {
+	.container {
+		flex-direction: column-reverse;
+	}
+
+	.main-wrapper {
+		padding: var(--spacing-md) var(--spacing-base);
+	}
 }

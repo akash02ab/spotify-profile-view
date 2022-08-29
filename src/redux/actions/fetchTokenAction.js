@@ -31,8 +31,8 @@ export const getToken = () => {
 			method: "POST",
 			url: "https://accounts.spotify.com/api/token",
 			auth: {
-				username: "d45167963940408e8732302c867374d5",
-				password: "35ebcc2d29024775a9931c846430772b",
+				username: process.env.REACT_APP_USERNAME,
+				password: process.env.REACT_APP_PASSWORD,
 			},
 			headers: {
 				"Content-Type": "application/x-www-form-urlencoded",
@@ -40,8 +40,8 @@ export const getToken = () => {
 			data: queryString.stringify({
 				grant_type: "authorization_code",
 				code: code,
-				redirect_uri: "https://sleepy-lichterman-b9a815.netlify.app/",
-				// redirect_uri: "http://localhost:3000/",
+				// redirect_uri: "https://sleepy-lichterman-b9a815.netlify.app/",
+				redirect_uri: "http://localhost:3000/",
 			}),
 		};
 
@@ -72,8 +72,8 @@ export const refreshAccessToken = () => {
 			method: "POST",
 			url: "https://accounts.spotify.com/api/token",
 			auth: {
-				username: "d45167963940408e8732302c867374d5",
-				password: "35ebcc2d29024775a9931c846430772b",
+				username: process.env.REACT_APP_USERNAME,
+				password: process.env.REACT_APP_PASSWORD,
 			},
 			headers: {
 				"Content-Type": "application/x-www-form-urlencoded",

@@ -1,6 +1,15 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
 import { update_path } from "../redux/actions/userDataAction";
+import {
+	IconSpotify,
+	IconUser,
+	IconTime,
+	IconMicrophone,
+	IconPlaylist,
+	IconMusic,
+	IconGithub,
+} from "../icons";
 import "../styles/sidebar.css";
 
 function Sidebar() {
@@ -15,30 +24,37 @@ function Sidebar() {
 
 	return (
 		<div className="sidebar">
-			<div className="spotify-logo">
-				<img src="../assets/icons/spotify-brands.svg" alt="logo" />
+			<div className="spotify-logo" onClick={() => clickhandler("/profile")}>
+				<IconSpotify />
 			</div>
 
 			<div className="nav-icons">
 				<div className={path === "/profile" ? "box active" : "box"} onClick={() => clickhandler("/profile")}>
-					<img src="../assets/icons/user-solid.svg" alt="user" />
+					<IconUser />
+					<p>Profile</p>
 				</div>
 				<div className={path === "/artists" ? "box active" : "box"} onClick={() => clickhandler("/artists")}>
-					<img src="../assets/icons/microphone-solid.svg" alt="mic" />
+					<IconMicrophone />
+					<p>Artists</p>
 				</div>
 				<div className={path === "/tracks" ? "box active" : "box"} onClick={() => clickhandler("/tracks")}>
-					<img src="../assets/icons/music-solid.svg" alt="music" />
+					<IconMusic />
+					<p>Tracks</p>
 				</div>
 				<div className={path === "/recent" ? "box active" : "box"} onClick={() => clickhandler("/recent")}>
-					<img src="../assets/icons/redo-alt-solid.svg" alt="recent" />
+					<IconTime />
+					<p>Recent</p>
 				</div>
-				<div className={path === "/playlist" ? "box active" : "box"} onClick={() => clickhandler("/playlist")}>
-					<img src="../assets/icons/playlist.svg" alt="playlist" />
+				<div className={path === "/playlists" ? "box active" : "box"} onClick={() => clickhandler("/playlists")}>
+					<IconPlaylist />
+					<p>Playlists</p>
 				</div>
 			</div>
 
 			<div className="github">
-				<img src="../assets/icons/github.svg" alt="github" />
+				<a href="https://github.com/akash02ab/spotify-profile-view" target="_blank" rel="noopener noreferrer">
+					<IconGithub />
+				</a>
 			</div>
 		</div>
 	);

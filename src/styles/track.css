@@ -1,30 +1,48 @@
 .tracks {
-	width: 90vw;
+	width: 100%;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	gap: 4rem;
+	gap: var(--spacing-lg);
 }
 
 .tracks > .header {
-	width: 80%;
+	width: 100%;
 	display: flex;
+	align-items: center;
 	justify-content: space-between;
 }
 
 .tracks > .header > .wrapper {
 	display: flex;
-	gap: 1rem;
+	gap: var(--spacing-base);
 	cursor: pointer;
 }
 
 .track-wrapper {
-	width: 80%;
+	width: 100%;
 	display: flex;
 	flex-direction: column;
-	gap: 2rem;
+	gap: var(--spacing-md);
 }
 
 .tracks .wrapper .active {
 	text-decoration: underline;
+}
+
+@media screen and (max-width: 768px) {
+	.tracks .header {
+		flex-direction: column;
+		gap: var(--spacing-base);
+	}
+}
+
+@media screen and (max-width: 480px) {
+	.tracks .header h1 {
+		font-size: var(--font-lg);
+	}
+
+	.tracks .header p {
+		font-size: var(--font-xs);
+	}
 }

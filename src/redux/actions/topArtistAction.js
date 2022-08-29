@@ -28,11 +28,10 @@ export const getTopArtist = () => {
 		let getOptions = (term) => {
 			return {
 				method: "GET",
-				url: "https://api.spotify.com/v1/me/top/artists?time_range=" + term,
+				url: "https://api.spotify.com/v1/me/top/artists?limit=50&time_range=" + term,
 				headers: {
 					Authorization: "Bearer " + access_token,
 					"Content-Type": "application/json",
-					Accept: "application/json",
 				},
 			};
 		};

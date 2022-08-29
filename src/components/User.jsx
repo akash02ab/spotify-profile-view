@@ -1,46 +1,46 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { REMOVE_TOKEN } from "../redux/actions";
-import { refreshAccessToken } from "../redux/actions/fetchTokenAction";
-import "../styles/user.css";
+import { handleError } from "../utils";
+import { IconUser } from "../icons";
+import Loader from "./Loader";
+import "../styles/user.css";             
 
 function User() {
-	const { user, loading, error } = useSelector((state) => state.userState);
-	const history = useHistory();
 	const dispatch = useDispatch();
+	const history = useHistory();
+	const { user, error } = useSelector((state) => state.userState);
 
 	const clickhandler = () => {
-		localStorage.setItem("persistantState", null);
 		dispatch({ type: REMOVE_TOKEN });
-		history.push("/");
+		localStorage.removeItem("persistantState");
+		history.replace("/");
 	};
 
 	if (error) {
-		dispatch(refreshAccessToken());
-		// window.location.reload();
-		return null;
+		dispatch(handleError(error));
+		return <Loader />;
 	}
 
-	if (loading) return null;
+	if (!user) return <Loader />;
 
-	const alt = "../assets/icons/user-solid.svg";
-	const src = user.images[0].url || alt;
+	const src = user.images[0].url;
 
 	return (
 		<div className="user">
-			<img src={src} className={src === alt ? "default" : ""} alt="" />
+			{src ? <img src={src} alt="avatar" /> : <IconUser className="default" />}
 			<h1>{user.display_name}</h1>
 			<div className="info">
 				<div className="follower">
-					<p>{user.followers.total}</p>
+					<p>{user?.followers.total}</p>
 					<h5>FOLLOWERS</h5>
 				</div>
 				<div className="following">
-					<p>{Math.floor(Math.random() * 30)}</p>
+					<p>{user?.following}</p>
 					<h5>FOLLOWING</h5>
 				</div>
 				<div className="playlist">
-					<p>{Math.floor(Math.random() * 10)}</p>
+					<p>{user?.playlist}</p>
 					<h5>PLAYLIST</h5>
 				</div>
 			</div>

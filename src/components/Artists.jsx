@@ -1,11 +1,32 @@
-import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { getTopArtist } from "../redux/actions/topArtistAction";
+import { handleError } from "../utils";
 import ArtistsCard from "./ArtistsCard";
+import Loader from "./Loader";
 import "../styles/artist.css";
 
 export default function Artists() {
-	const { topArtists, topArtistsMonths, topArtistsWeeks } = useSelector((state) => state.topArtistState);
+	const { topArtists, topArtistsMonths, topArtistsWeeks, loading, error } = useSelector((state) => state.topArtistState);
 	const [active, setActive] = useState("All");
+	const dispatch = useDispatch();
+
+	useEffect(() => {
+		if (!topArtists) {
+			dispatch(getTopArtist());
+		}
+	}, [dispatch, topArtists]);
+
+	if (error) {
+		dispatch(handleError(error));
+		return <Loader />;
+	}
+
+	if (loading || (active === "All" && !topArtists)) return <Loader />;
+
+	if (loading || (active === "Medium" && !topArtistsMonths)) return <Loader />;
+
+	if (loading || (active === "Short" && !topArtistsWeeks)) return <Loader />;
 
 	return (
 		<div className="artists">
