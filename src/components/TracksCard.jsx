@@ -8,7 +8,7 @@ export default function TracksCard({ track }) {
 		<Link to={`/track/${track.id}`}>
 			<div className="track">
 				<div className="track-left">
-					<img src={track.album.images[0].url} alt="track" />
+					<img src={track.album.images?.[0]?.url} alt="track" />
 				</div>
 				<div className="track-right">
 					<div className="info">

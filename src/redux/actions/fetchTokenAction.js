@@ -40,7 +40,7 @@ export const getToken = () => {
 			data: queryString.stringify({
 				grant_type: "authorization_code",
 				code: code,
-				redirect_uri: "https://sleepy-lichterman-b9a815.netlify.app/",
+				redirect_uri: "https://spotify-profile-views.netlify.app/",
 				// redirect_uri: "http://localhost:3000/",
 			}),
 		};
