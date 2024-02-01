@@ -1,8 +1,6 @@
-# Spotify Profile App
+# Spotify Profile View
 
-We will be creating a Spotify Profile overview app which will fetch a Spotify user's info, recent activity, favorite tracks, favorite artists, and playlists.
-
-You need to use `redux` compulsorily in this project.
+Spotify Profile overview app which will fetch a Spotify user's info, recent activity, favorite tracks, favorite artists, and playlists.
 
 ## Screenshots
 
@@ -10,22 +8,39 @@ You need to use `redux` compulsorily in this project.
    ![](./screenshots/login.png)
 
 2. Profile Page
-   ![](./screenshots/home.jpeg)
+   ![](./screenshots/profile.png)
 
 3. Top Artists Page with filters
-   ![](./screenshots/artists.jpeg)
+   ![](./screenshots/artists.png)
 
-4. Top Tracks Page with filters
-   ![](./screenshots/tracks.jpeg)
+4. Artist Details
+   ![](./screenshots/artist-detail.png)
 
-5. Recent activity (**Stretch**)
-   ![](./screenshots/6.png)
+5. Top Tracks Page with filters
+   ![](./screenshots/tracks.png)
 
-6. Playlists (**Stretch**)
-   ![](./screenshots/5.png)
+6. Track Detail
+   ![](./screenshots/track-detail.png)
 
-Stretch: Mobile friendly:
+7. Recent activity
+   ![](./screenshots/recently-viewed.png)
 
-![](./screenshots/mob-1.png)
+8. Playlists
+   ![](./screenshots/playlist.png)
 
-![](./screenshots/mob-2.png)
+9. Playlist Expanded
+   ![](./screenshots/playlist-expand.png)
+
+10. Profile Page Mobile
+   
+    ![](./screenshots/mobile-profile-view.png)
+
+
+11. Top Artists Page Mobile
+    
+    ![](./screenshots/mobile-artisits.png)
+
+
+12. Top Tracks Page Mobile
+    
+    ![](./screenshots/mobile-tracks.png)
