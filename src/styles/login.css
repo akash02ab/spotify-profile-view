@@ -6,7 +6,7 @@
 	gap: var(--spacing-sm);
 }
 
-.login > button {
+.login > .l-btn {
 	width: 12rem;
 	height: 2rem;
 	border: none;
@@ -16,6 +16,33 @@
 	cursor: pointer;
 }
 
-.login > button:hover {
+.login > .l-btn:hover {
 	background: var(--spotify-green-fade);
+}
+
+.login > div {
+	max-width: 640px;
+	padding: 2rem;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: var(--spacing-sm);
+	color: var(--light-grey-secondary);
+}
+
+.login span {
+	color: var(--warning);
+}
+
+.login > a {
+	width: 12rem;
+	height: 2rem;
+	border: none;
+	border-radius: 1rem;
+	background: var(--blue);
+	color: var(--white);
+	cursor: pointer;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }

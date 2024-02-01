@@ -60,7 +60,12 @@ function Login() {
 	return (
 		<div className="login">
 			<h2>Spotify Profile</h2>
-			<button onClick={login}>LOGIN INTO SPOTIFY</button>
+			<button onClick={login} className="l-btn">LOGIN INTO SPOTIFY</button>
+			<div>
+				<p>Spotify has introduced <span>Quota extenstion</span> for the project that are in development mode, thus they will <span>not</span> grant a quota extension for home automation, school, or <span>hobby projects</span>. This application can only be logged in by atmost <span>25 users</span> whose <u><span>user name &amp; email</span> is present in my spotify dashboard under user mangagement</u>.</p>
+				<p>Please visit the github repository to view the screenshot.</p>
+			</div>
+			<a href="https://github.com/akash02ab/spotify-profile-view">View Screenshots</a>
 		</div>
 	);
 }
